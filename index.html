@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Lumi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // or 'media' or 'class'
+        theme: {
+          extend: {
+            colors: {
+              primary: { // Indigo
+                light: '#6366f1', // indigo-500
+                DEFAULT: '#4f46e5', // indigo-600
+                dark: '#4338ca', // indigo-700
+                foreground: '#ffffff' // white text on primary
+              },
+              secondary: { // Neutral for secondary actions/elements
+                light: '#e5e5e5', // neutral-200 (use as base for light mode secondary button)
+                DEFAULT: '#d4d4d4', // neutral-300 (use as hover for light mode secondary button)
+                dark: '#a3a3a3',   // neutral-400 (not directly used by button variant if we define dm specific)
+                foreground: '#404040', // neutral-700 (text on light secondary button)
+                // Dark mode specific shades for secondary button
+                bgDark: '#404040', // neutral-700 (button bg on dark mode)
+                hoverDark: '#525252', // neutral-600 (button hover on dark mode)
+                textDark: '#e5e5e5', // neutral-200 (button text on dark mode)
+              },
+              accent: { // Pink
+                light: '#f472b6', // pink-400
+                DEFAULT: '#ec4899', // pink-500
+                dark: '#db2777', // pink-600
+                foreground: '#ffffff' // white text on accent
+              },
+              bglight: '#f5f5f5', // neutral-100
+              bgdark: '#171717', // neutral-900
+              textlight: '#262626', // neutral-800
+              textdark: '#e5e5e5', // neutral-200
+              borderlight: '#d4d4d4', // neutral-300
+              borderdark: '#404040', // neutral-700
+
+              // Surface colors for cards, inputs, etc.
+              surfacelight: '#ffffff', // white
+              surfacedark: '#262626', // neutral-800
+
+              // Specific content backgrounds for contrast
+              contentbglight: '#fafafa', // neutral-50
+              contentbgdark: '#262626', // neutral-800 (same as surfacedark)
+              // Neutral shades for history item hover on dark mode
+              'neutral-750': '#3a3a3a', // A shade between neutral-700 and neutral-800
+            },
+            boxShadow: {
+              'custom-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07)',
+              'custom-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08)',
+              'custom-lg-dark': '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.25)',
+              'custom-xl-dark': '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.35)',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInDown: {
+                '0%': { opacity: '0', transform: 'translateY(-12px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              themeRevealFromTopRight: {
+                'from': { clipPath: 'circle(0% at 90% 10%)' }, /* Origin: top-rightish */
+                'to': { clipPath: 'circle(150% at 90% 10%)' }
+              }
+            },
+            animation: {
+              fadeIn: 'fadeIn 0.4s ease-in-out',
+              fadeInDown: 'fadeInDown 0.5s ease-in-out',
+              'theme-reveal': 'themeRevealFromTopRight 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-bglight dark:bg-bgdark text-textlight dark:text-textdark font-sans">
+    <div id="root"></div>
+    <div id="theme-transition-overlay" class="fixed inset-0 pointer-events-none z-[9999]"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

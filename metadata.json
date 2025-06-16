@@ -1,0 +1,6 @@
+{
+  "name": "Prompt Lumi",
+  "description": "An application to enhance short user ideas into full-fledged, optimized prompts for Large Language Models (LLMs) using the Gemini API. It intelligently expands, structures, and enriches prompts for better AI results.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
